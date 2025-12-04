@@ -8,7 +8,7 @@
 #include <vector>
 #include <cmath>
 #include <cstdlib>
-#include <ctime>
+#include <ctime> 
 #include <chrono> // For precise timing
 
 // Configuration Constants
@@ -68,6 +68,7 @@ void pageRankSequential(int num_nodes, const Graph &graph, std::vector<float> &r
 
         // 2. Update PageRanks
         // Corresponds to: "for all p in the graph do" [cite: 187]
+        // This is the main hotspot .
         for (int p = 0; p < num_nodes; ++p) {
             // Base value: dp + (1-d)/N [cite: 189]
             float val = dangling_sum + (1.0f - DAMPING) / num_nodes;

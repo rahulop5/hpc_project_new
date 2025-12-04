@@ -1,0 +1,230 @@
+DETAILED MANUAL PROFILING RESULTS
+=================================
+--------------------------------------------------------------------------------
+Input Size: 10 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.006 ms
+Graph Generation:     0.007 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0 ms
+- updateRanks:          0 ms
+- overhead:             0.002 ms
+
+Hotspot: overhead (33.33%)
+--------------------------------------------------------------------------------
+Input Size: 50 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.011 ms
+Graph Generation:     0.044 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.001 ms
+- updateRanks:          0.007 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (63.64%)
+--------------------------------------------------------------------------------
+Input Size: 100 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.055 ms
+Graph Generation:     0.28 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.005 ms
+- updateRanks:          0.041 ms
+- overhead:             0 ms
+
+Hotspot: updateRanks (74.55%)
+--------------------------------------------------------------------------------
+Input Size: 200 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.194 ms
+Graph Generation:     1.185 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.005 ms
+- updateRanks:          0.179 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (92.27%)
+--------------------------------------------------------------------------------
+Input Size: 300 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.146 ms
+Graph Generation:     0.822 ms
+
+Breakdown:
+- initializeRanks:      0.001 ms
+- calculateDanglingSum: 0.001 ms
+- updateRanks:          0.14 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (95.89%)
+--------------------------------------------------------------------------------
+Input Size: 400 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.702 ms
+Graph Generation:     3.982 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.007 ms
+- updateRanks:          0.689 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (98.15%)
+--------------------------------------------------------------------------------
+Input Size: 500 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.356 ms
+Graph Generation:     3.358 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.002 ms
+- updateRanks:          0.349 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (98.03%)
+--------------------------------------------------------------------------------
+Input Size: 600 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.687 ms
+Graph Generation:     4.01 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.005 ms
+- updateRanks:          0.677 ms
+- overhead:             0.002 ms
+
+Hotspot: updateRanks (98.54%)
+--------------------------------------------------------------------------------
+Input Size: 700 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.151 ms
+Graph Generation:     9.647 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.007 ms
+- updateRanks:          1.135 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (98.61%)
+--------------------------------------------------------------------------------
+Input Size: 800 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.017 ms
+Graph Generation:     7.508 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.004 ms
+- updateRanks:          1.005 ms
+- overhead:             0.001 ms
+
+Hotspot: updateRanks (98.82%)
+--------------------------------------------------------------------------------
+Input Size: 900 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.282 ms
+Graph Generation:     9.917 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.006 ms
+- updateRanks:          1.268 ms
+- overhead:             0 ms
+
+Hotspot: updateRanks (98.91%)
+--------------------------------------------------------------------------------
+Input Size: 1000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.439 ms
+Graph Generation:     9.451 ms
+
+Breakdown:
+- initializeRanks:      0.001 ms
+- calculateDanglingSum: 0.007 ms
+- updateRanks:          1.422 ms
+- overhead:             0.002 ms
+
+Hotspot: updateRanks (98.82%)
+--------------------------------------------------------------------------------
+Input Size: 2000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 6.607 ms
+Graph Generation:     37.722 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.016 ms
+- updateRanks:          6.577 ms
+- overhead:             0.005 ms
+
+Hotspot: updateRanks (99.55%)
+--------------------------------------------------------------------------------
+Input Size: 3000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 13.906 ms
+Graph Generation:     78.381 ms
+
+Breakdown:
+- initializeRanks:      0 ms
+- calculateDanglingSum: 0.016 ms
+- updateRanks:          13.867 ms
+- overhead:             0.007 ms
+
+Hotspot: updateRanks (99.72%)
+--------------------------------------------------------------------------------
+Input Size: 4000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 24.951 ms
+Graph Generation:     139.819 ms
+
+Breakdown:
+- initializeRanks:      0.001 ms
+- calculateDanglingSum: 0.021 ms
+- updateRanks:          24.905 ms
+- overhead:             0.012 ms
+
+Hotspot: updateRanks (99.82%)
+--------------------------------------------------------------------------------
+Input Size: 5000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 46.216 ms
+Graph Generation:     210.118 ms
+
+Breakdown:
+- initializeRanks:      0.001 ms
+- calculateDanglingSum: 0.028 ms
+- updateRanks:          46.149 ms
+- overhead:             0.021 ms
+
+Hotspot: updateRanks (99.86%)
+
+SUMMARY TABLE
+=============
+Nodes	Total(ms)	Hotspot Function	Hotspot Time(ms)
+10	0.006	overhead	0.002
+50	0.011	updateRanks	0.007
+100	0.055	updateRanks	0.041
+200	0.194	updateRanks	0.179
+300	0.146	updateRanks	0.14
+400	0.702	updateRanks	0.689
+500	0.356	updateRanks	0.349
+600	0.687	updateRanks	0.677
+700	1.151	updateRanks	1.135
+800	1.017	updateRanks	1.005
+900	1.282	updateRanks	1.268
+1000	1.439	updateRanks	1.422
+2000	6.607	updateRanks	6.577
+3000	13.906	updateRanks	13.867
+4000	24.951	updateRanks	24.905
+5000	46.216	updateRanks	46.149

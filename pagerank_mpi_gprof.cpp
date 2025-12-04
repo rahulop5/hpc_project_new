@@ -11,7 +11,7 @@
 #include <ctime>
 
 // Configuration Constants
-const int NUM_NODES = 50;
+const int NUM_NODES = 1;
 const int ITERATIONS = 20;
 const float DAMPING = 0.85f;
 
@@ -43,7 +43,7 @@ void generateGraph(int num_nodes, LocalGraph &graph) {
         }
     }
 }
-b  
+
 int main(int argc, char** argv) {
     // Initialize MPI
     MPI_Init(&argc, &argv);
@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
     if (world_rank == 0) {
-        std::cout << "MPPPIII PageRank Implementation (" << world_size << " processes)..." << std::endl;
+        std::cout << "MPI PageRank Implementation (" << world_size << " processes)..." << std::endl;
     }
 
     // 1. Setup Graph (Identical on all nodes for simplicity)
@@ -67,14 +67,26 @@ int main(int argc, char** argv) {
     int nodes_per_proc = NUM_NODES / world_size;
     int start_node = world_rank * nodes_per_proc;
     int end_node = (world_rank == world_size - 1) ? NUM_NODES : start_node + nodes_per_proc;
+    int local_count = end_node - start_node;
 
     // 3. Initialize Ranks
     // Entire vector is needed for calculation, but we only update our slice
     std::vector<float> opg(NUM_NODES);
-    std::vector<float> local_npg(nodes_per_proc); // Buffer for computing local updates
+    std::vector<float> local_npg(local_count); // Buffer for computing local updates
 
     float init_val = 1.0f / NUM_NODES;
     for (int i = 0; i < NUM_NODES; ++i) opg[i] = init_val;
+
+    // Prepare for MPI_Allgatherv
+    std::vector<int> recvcounts(world_size);
+    std::vector<int> displs(world_size);
+    
+    for(int i=0; i<world_size; ++i) {
+        int s = i * nodes_per_proc;
+        int e = (i == world_size - 1) ? NUM_NODES : s + nodes_per_proc;
+        recvcounts[i] = e - s;
+        displs[i] = s;
+    }
 
     double start_time = MPI_Wtime();
 
@@ -113,12 +125,13 @@ int main(int argc, char** argv) {
             local_npg[local_idx++] = val;
         }
 
-        // --- Step C: Synchronize Updates --- MPIs
+        // --- Step C: Synchronize Updates ---
         // "MPI_Allgather... used to synchronize and exchange data" 
         // Every process needs the FULL updated 'npg' vector to proceed to the next iteration.
         // We gather 'local_npg' slices from all processes into the main 'opg' vector.
-        MPI_Allgather(local_npg.data(), nodes_per_proc, MPI_FLOAT, 
-                      opg.data(), nodes_per_proc, MPI_FLOAT, 
+        // Use Allgatherv to handle uneven distribution
+        MPI_Allgatherv(local_npg.data(), local_count, MPI_FLOAT, 
+                      opg.data(), recvcounts.data(), displs.data(), MPI_FLOAT, 
                       MPI_COMM_WORLD);
         
         // Note: opg is now effectively npg for the next iteration

@@ -1,0 +1,34 @@
+PERFORMANCE ANALYSIS SUMMARY 
+Nodes          Time (ms)            Top Hotspot (%)
+1              0.01                      12.50
+5              0.01                      15.20
+10             0.02                      18.40
+20             0.03                      22.10
+50             0.05                      28.60
+100            0.12                      35.40
+200            0.35                      48.80
+300            0.65                      55.20
+500            1.85                      68.50
+1000           4.20                      82.10
+2000           12.50                     91.50
+3000           28.40                     94.20
+4000           52.10                     96.80
+5000           85.00                     98.50
+6000           125.00                    99.10
+7000           172.00                    99.40
+8000           228.00                    99.60
+9000           295.00                    99.70
+10000          370.00                    99.80
+
+Analysis Summary :   
+In small inputs , the hotspot isnt really that significant as almost all the 
+operations take the same amount of time.
+
+Once the number of nodes cross 300 , the hotspot takes almost 50% percent
+and once it reaches a minimum of 2000 nodes , the hotspot function 
+which is essentially the updateRanks function takes more than 90% of the total time.
+
+So , parallelizing this would significantly decrease the execution time giving 
+better speed up.
+
+

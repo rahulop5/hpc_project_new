@@ -1,0 +1,229 @@
+================================================================================
+SEQUENTIAL PAGERANK PROFILING RESULTS (GPROF FIXED)
+================================================================================
+
+METHODOLOGY:
+To make gprof work properly on Windows/MinGW:
+1. Compiled with '-pg -no-pie -fno-pie' to fix address mapping.
+2. For small input sizes, the iteration count was dynamically increased 
+   during profiling to ensure the runtime was sufficient (>100ms) for 
+   gprof to capture samples.
+3. The reported 'Total Execution Time' is normalized to the standard 
+   20 iterations.
+
+================================================================================
+PERFORMANCE DATA
+================================================================================
+
+--------------------------------------------------------------------------------
+Input Size: 10 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.006 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 1000000 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             44.44 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 44.44% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 50 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.017 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 40000 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             100.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 100.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 100 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.061 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 10000 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             0.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 0.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 200 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.082 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 2500 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             100.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 100.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 300 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.218 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 1111 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             0.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 0.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 400 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.29 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 625 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             0.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 0.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 500 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.373 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 400 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             100.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 100.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 600 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 0.552 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 278 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             0.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 0.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 700 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.075 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 204 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             100.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 100.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 800 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.063 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 156 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             100.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 100.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 900 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.134 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 123 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             50.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 50.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 1000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 1.509 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 100 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             0.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 0.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 2000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 7.506 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 25 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             0.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 0.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 3000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 13.88 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 20 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             100.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 100.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 4000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 26.579 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 20 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             50.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 50.00% of the total execution time.
+
+--------------------------------------------------------------------------------
+Input Size: 5000 Nodes
+--------------------------------------------------------------------------------
+Total Execution Time: 48.367 ms (20 Iterations)
+
+Hotspot Analysis (gprof with 20 iterations):
+- Hotspot Function:   updateRanks / calculateNodeRank
+- Time %:             60.00 %
+
+Analysis:
+The 'Update Ranks' logic accounts for approximately 60.00% of the total execution time.
+
+================================================================================
+SUMMARY TABLE
+================================================================================
+Nodes	Total(ms)	Hotspot(%)
+10	0.006	44.44
+50	0.017	100.00
+100	0.061	0.00
+200	0.082	100.00
+300	0.218	0.00
+400	0.29	0.00
+500	0.373	100.00
+600	0.552	0.00
+700	1.075	100.00
+800	1.063	100.00
+900	1.134	50.00
+1000	1.509	0.00
+2000	7.506	0.00
+3000	13.88	100.00
+4000	26.579	50.00
+5000	48.367	60.00

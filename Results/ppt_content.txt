@@ -1,0 +1,120 @@
+Slide 1 : 
+   Title :  Performance Analysis of PageRank Algorithm using MPI and CUDA
+
+   Intro about the problem statement :
+- The PageRank algorithm (used by search engines) requires iterative      computations on massive graphs (billions of web pages).
+- Sequential execution becomes a bottleneck as the graph size (N) grows.
+- Complexity: O(k * (N + E)), where k=iterations, N=nodes, E=edges.
+
+Slide 2 : 
+Objective : 
+We must accelerate the page rank calculation using some HPC frameworks like MPI and CUDA	
+And compare the performance . 
+Seq (CPU)
+MPI (Distributed memory - cluster)
+CUDA (Shared Memory - GPU)
+Parallelizing the hotstops in the sequential code would give significant results.
+
+Slide 3 : 
+Sequential Implementation
+Approach:
+- Standard brute force iterative method.
+- Data Structure: Adjacency List for depicting the graph.
+- Logic:
+  1. Initialize all ranks to 1/N.
+  2. Loop for 20 iterations.
+  3. Calculate 'Dangling Sum' (nodes with no out-links).
+  4. Update ranks based on incoming links.
+- Limitations here are as follows :
+   Single thread execution.
+   CPU utilization is limited to one core only which is not efficient .
+
+Slide 4 : 
+Parallelization Strategy
+Hotspots to parallelize : 
+The main hotspots lie in the updateRank() function .
+MPI Data decomposition : 
+            Diving the graph nodes among multiple processors 
+	Each processor computes ranks for its assigned nodes.
+	Need to use MPI_Allgatherv to synchronize ranks after each iteration.
+Cuda fine grained : 
+	Treats almost every edge as an independent task and launches thousands of threads on 	the GPU . Since the GPu threads are very soft , this large number of them doesn't   
+           account to any overhead.
+
+Slide 5 : 
+MPI Impl
+Key steps : 
+1) Determining the process ID and total process.
+2) Each process has N/P nodes.
+3) Communication between processes is done by MPI_Allgatherv.
+
+
+	MPI_Allgatherv(local_new_ranks, local_count, MPI_FLOAT, 
+                 global_ranks, counts, displs, MPI_FLOAT, MPI_COMM_WORLD);
+
+ 
+	MPI_execution time graph
+
+
+
+Slide 6 : CUDA
+- Kernel Functions:
+  - calculateDanglingSumKernel: This uses parallel reduction.
+  - updateRanksKernel: Assigns one thread per node to compute the new rank.
+- Memory Optimization:
+  - Using CSR (Compressed Sparse Row) to minimize memory footprint and improve cache coherence on the GPU.
+
+Cuda execution time graph
+
+
+
+
+
+Slide 7 : 
+Hardware : CPU,GPU
+Software:
+- OS: Windows 10/11 (WSL for MPI)
+- Compiler: g++, mpic++, nvcc
+- Profiling Tools: gprof, std::chrono
+
+Parameters:
+- Nodes (N): 1 to 10,000
+- Iterations: Fixed at 20
+- Damping Factor: 0.85
+
+
+ SLIDE 8: Results & Observations 
+ Execution Time for N = 10,000 Nodes:
+
+1. Sequential: ~3143 ms   
+   -Baseline performance. Linear growth with N.
+
+2. MPI (4 Processes): ~300 ms
+   - Speedup: ~10x compared to sequential.
+   - Note: For small N (< 1000), MPI is slower due to communication overhead.
+   - Scalability: Excellent for large N.
+
+3. CUDA: (around 20ms) 
+   - Observed to be the fastest in almost all the cases when N>=1000
+   - However, We could see high initialization overhead for small graphs which lead to its 
+    underperformance compared to the others.
+
+Evaluation Metrics (N=10,000):
+- Speedup (S = T_seq / T_par): MPI achieves ~10.5x, while CUDA achieves ~157x speedup.
+- Efficiency (E = S / p): MPI shows superlinear efficiency (>100%) due to effective cache usage.
+- Cost (C = p * T_par): MPI Cost = 4 * 300ms = 1200ms (significantly lower than Sequential's 3143ms).
+- Conclusion: CUDA is the most time-efficient, while MPI is highly cost-effective for CPU clusters.
+
+ 
+SLIDE 9: Conclusion
+Summary:
+- Parallelization significantly reduces execution time for large graphs.
+- MPI is effective for distributed systems but has communication bottlenecks.
+- CUDA offers massive parallelism but requires careful memory management.
+
+Final Verdict:
+- For N=10,000, MPI provided a 10x speedup.
+- For massive scale (millions of nodes), a hybrid MPI + CUDA approach would be optimal.
+
+
+

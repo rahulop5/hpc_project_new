@@ -1,0 +1,30 @@
+PERFORMANCE ANALYSIS SUMMARY (MPI - 4 Processes)
+================================================
+Nodes	Execution Time (ms)	Top Hotspot (%)
+5	0.876952	0.00
+10	0.284807	0.00
+20	5.19952	0.00
+50	1.15837	0.00
+100	0.676454	0.00
+200	0.616306	0.00
+300	1.33315	0.00
+500	1.00236	0.00
+1000	6.31045	100.00
+2000	12.9712	100.00
+3000	11.3013	100.00
+4000	37.3031	40.00
+5000	183.529	50.00
+6000	51.6674	37.50
+7000	55.96	70.00
+8000	316.162	48.39
+9000	135.644	62.96
+10000	302.983	56.67
+
+ANALYSIS SUMMARY
+================
+1. Scalability:
+   - The MPI implementation demonstrates reduced execution time for large N compared to sequential.
+   - Overhead is higher for small N due to communication costs.
+
+2. Hotspots:
+   - The computation is distributed, but 'updateRanks' (or main loop) remains the dominant local factor.

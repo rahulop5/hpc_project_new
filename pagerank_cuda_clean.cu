@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int NUM_NODES = 1024;
+const int NUM_NODES = 10000;
 const int ITERATIONS = 20;
 const float DAMPING = 0.85f;
 const int BLOCK_SIZE = 256;

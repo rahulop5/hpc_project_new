@@ -1,0 +1,5 @@
+PERFORMANCE ANALYSIS SUMMARY (CUDA - Host gprof)
+Nodes	Execution Time (ms)	Top Hotspot (%)
+1	1.58602	0.00
+5	1.55744	0.00
+10	1.51766	0.00

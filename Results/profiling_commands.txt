@@ -1,0 +1,19 @@
+
+COMMANDS TO EXECUTE PROFILING SCRIPTS
+
+1. SEQUENTIAL PROFILING (Windows PowerShell)
+   This script compiles the instrumented code (pagerank_sequential_gprof.cpp),
+   runs it for node counts 1 to 10000, and generates gprof reports.
+   
+   Command:
+   .\run_seq_profiling.ps1
+
+
+2. MPI PROFILING (WSL / Bash)
+   This script runs the MPI implementation in the WSL environment.
+   Command (if running from Windows PowerShell):
+   wsl ./run_mpi_analysis.sh
+
+   Command (if already inside WSL terminal):
+   ./run_mpi_analysis.sh
+

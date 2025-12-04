@@ -1,0 +1,33 @@
+COMMANDS TO RUN SOURCE FILES MANUALLY
+=====================================
+
+1. SEQUENTIAL (C++)
+   File: pagerank_sequential.cpp
+   
+   Compile:
+   g++ -O2 -o pagerank_seq pagerank_sequential.cpp
+   
+   Run:
+   .\pagerank_seq.exe
+
+-------------------------------------
+
+2. MPI (Parallel) - MUST RUN IN WSL
+   File: pagerank_mpi.cpp
+   
+   Compile:
+   mpic++ -O2 -o pagerank_mpi pagerank_mpi.cpp
+   
+   Run (with 4 processes):
+   mpirun --oversubscribe -np 4 ./pagerank_mpi
+
+-------------------------------------
+
+3. CUDA (GPU)
+   File: pagerank_cuda.cu
+   
+   Compile:
+   nvcc -o pagerank_cuda pagerank_cuda.cu
+   
+   Run:
+   .\pagerank_cuda.exe
